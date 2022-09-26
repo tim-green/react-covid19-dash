@@ -1,38 +1,249 @@
-.App {
+*, *::before, *:after{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+
+/* Root Styles */
+:root{
+  /* header */
+  --header-bg-color: #293042;
+  --header-color: #ffffff;
+  --main-bg-color: #f7f9fc;
+  --statstile-bg-color: #fff;
+
+  /* stats */
+  --stats-tile-bg-color:#e7eeee;
+  --stats-tile-header-color: #495057;
+  --stats-tile-color: #199191;
+  --stats-tile-border-color: #c3d5d5;
+  --stats-tile-border-color: var(--stats-tile-color);
+
+  /* footer */
+  --footer-bg-color: #293042;
+  --footer-color: #ffffff;
+}
+
+/* Import Google Font: Nunito Sans / Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+body{
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #6c7293;
+  /* background: #f4f7fb; */
+}
+
+/* .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+
+} */
+
+.h4, h4, .counterInfo{
+  color: #6c757d;
+}
+
+.btn{
+  padding: 12px 24px;
+  border-radius: 6px;
+  background-color: #e7e7e7;
+  color: #000;
+  font-size: .9rem;
+  cursor: pointer;
+  text-decoration: none; 
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
   text-align: center;
+  align-items: flex-start;
+  border: 1px solid #e4eaec;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.btn-outline, .btn-outline:hover{
+  background: transparent;
+  border: 1px solid #e4eaec;
+  color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btn-outline:hover{
+  color: #000;
+  transition: ease-in .3s;
+}
+.App{
+  display: grid;
+  grid-template-areas: "header" "main" "footer";
+  grid-template-columns: 1fr;
+  grid-template-row: auto 1fr auto;
+  height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header{
+  grid-area: header;
+  background-color: var(--header-bg-color);
+  color: var(--header-color);
+  font-family: 'Poppins', sans-serif;
+  padding: 1.5rem;
+  font-size: 1.5rem;
   display: flex;
-  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  position: relative;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
+}
+
+.header h1{
+  font-size: 1.25rem;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: relative;
+  /* box-shadow: 0 2px 10px rgb(0 0 0 / 10%); */
 }
 
-.App-link {
-  color: #61dafb;
+.header h1{
+  letter-spacing:-1px;
+  font-size: 1.25rem;
+  margin-left: .5rem;
+  text-transform: uppercase;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* .header h1:hover{
+  
+} */
+
+
+.header svg{
+  fill: #78a6f0;
+}
+
+.main{
+  grid-area: main;
+  padding: 0;
+  overflow: auto;
+  background-color: var(--main-bg-color);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "country-stats-tile" "global-stats-tile" "countries-stats-tile";
+  gap: 2rem;
+}
+
+.main .StatsTile{
+  padding: 1rem 1rem 2rem 1rem;
+  box-shadow: 0 0 .875rem 0 rgba(41,48,66,.05);
+  border-radius: 5px;
+  background-color: var(--statstile-bg-color);
+}
+
+.main .StatsTile h2{
+  color: var(--stats-tile-header-color);
+  margin-bottom: 1rem;
+  font-size: 1.2375rem;
+}
+
+.main .CountryStatsTile{
+  grid-area:  country-stats-tile;
+}
+
+.main .GlobalStatsTile{
+  grid-area: global-stats-tile;
+}
+
+.main .CountriesStatsTile{
+  grid-area: countries-stats-tile;
+}
+
+
+.main .StatsTile .DataCards{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  cursor:auto;
+}
+
+.FilterBar input{
+  border: 1px solid #dee6ed;
+  padding: .5rem;
+  margin: .6rem 0;
+  min-width: 20%;
+  border-radius: 5px;
+
+}
+
+.scrollInfo{
+  font-weight: bold;
+  display:none;
+}
+.footer {
+  grid-area: footer;
+  color: var(--footer-color);
+  background-color: var(--footer-bg-color);
+  border-top: 3px solid #102840;
+  padding: .90rem 1rem;
+  font-size: 1.20rem;
+  font-weight: 800;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* .footer .btn {
+  
+} */
+
+.footer .btn:hover {
+  background: #ddd;
+}
+
+
+@media all and (min-width: 480px) {
+  .header {
+    padding: 1.5rem;
+    font-size: 2.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  .header h1 {
+    font-size: 2rem;
+  }
+  .main  {
+    padding: 1rem;
+  }
+}
+
+@media all and (min-width: 576px) {
+  .header {
+    padding: 1.5rem;
+    font-size: 2.5rem;
+  }
+  .header h1 {
+    font-size: 2rem;
+  }
+  .main  {
+    padding: 2rem;
+  }
+  .main .StatsTile{
+    padding: 1.5rem 1.5rem 2rem 1.5rem;
+  }
+}
+
+@media all and (min-width: 768px) {
+  .header {
+    padding: 1.5rem;
+    font-size: 2.5rem;
+  }
+  .header h1 {
+    font-size: 1.65rem;
+  }
+  .main {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "country-stats-tile global-stats-tile" "countries-stats-tile  countries-stats-tile";
+    gap: 2.5rem;
+    padding: 2.5rem;
+  }
+  .footer{
+    font-size: .80rem;
   }
 }
