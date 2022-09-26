@@ -41,7 +41,7 @@ export default function useFetch(){
 
         dispatch({globalStats: (data.Global || {})});
         dispatch({countryStats: (
-          countries.find(country => country.Slug === "australia") || {})
+          countries.find(country => country.CountryCode === "AU") || {})
         });
 
         dispatch({countriesStats: (countries || [])});
