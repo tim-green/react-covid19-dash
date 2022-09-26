@@ -1,23 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
 
+import CountryStatsTile from "./components/CountryStatsTile/CountryStatsTile";
+import GlobalStatsTile from "./components/GlobalStatsTile/GlobalStatsTile";
+import CountriesStatsTile from "./components/CountriesStatsTile/CountriesStatsTile";
+
+import useFetch from "./hooks/useFetch";
+
+import { MdOutlineCoronavirus } from 'react-icons/md';
+
+
 function App() {
+  const {state, loadData, filterCountriesStats, countriesStatsListRef} = useFetch();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="header">
+        <MdOutlineCoronavirus size="2.5rem" />{""}
+        <h1>COVID-19 Dashboard</h1>
       </header>
+      <main className="main">
+
+      {state.error && <div>An error occured: {state.error.message}</div>}
+
+      {state.loading && !state.error && <div>Fetching  Data...</div>}
+
+      {!state.error && !state.loading && (
+        <>
+          <CountryStatsTile countryStats={state.countryStats} />
+          <GlobalStatsTile globalStats={state.globalStats} />
+          <CountriesStatsTile countriesStats={state.filteredCountriesStats} filterStats={filterCountriesStats} totalCount={state.totalCount}  listRef={countriesStatsListRef} hasMore={state.hasMore} />
+        </>
+      )}
+      </main>
+
+      <footer className="footer">Status: {(new Date(state.globalStats.Date)).toLocaleString()}
+        <button className="btn btn-outline" onClick={loadData}>Update Data</button>
+      </footer>
     </div>
   );
 }
