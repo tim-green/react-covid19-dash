@@ -256,3 +256,12 @@ body{
     font-size: .80rem;
   }
 }
+
+@media all and (max-width: 755px) {
+ 
+  .footer{
+    font-size: .80rem;
+  }
+}
+
+}
