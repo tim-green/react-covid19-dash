@@ -91,6 +91,11 @@
     font-weight: 800;
   }
   
+
+  .CountriesStatsTile .countriesList li.loadMoreIndicator:hover {
+    color: #fff;
+  }
+  
   @media all and (min-width: 576px){
     .CountriesStatsTile .FilterBar {
       flex-direction: row;
