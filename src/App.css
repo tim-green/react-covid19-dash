@@ -71,7 +71,8 @@ body{
 }
 
 .btn-outline:hover{
-  color: #000;
+  color: var(--header-bg-color);
+  background: #e4eaec;
   transition: ease-in .3s;
 }
 .App{
@@ -111,6 +112,7 @@ body{
   margin-left: .5rem;
   text-transform: uppercase;
 }
+
 
 /* .header h1:hover{
   
