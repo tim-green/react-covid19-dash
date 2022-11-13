@@ -168,11 +168,10 @@ body{
 
 .FilterBar input{
   border: 1px solid #dee6ed;
-  padding: .5rem;
-  margin: .6rem 0;
-  min-width: 20%;
+  margin: .6rem 0 2rem;
+  padding: 0.9rem .9rem;
+  min-width: 30%;
   border-radius: 5px;
-
 }
 
 .scrollInfo{
