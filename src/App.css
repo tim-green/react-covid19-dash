@@ -264,4 +264,9 @@ body{
   }
 }
 
+@media all and (max-width: 380px) {
+ 
+  .footer{
+   display: none;
+  }
 }
